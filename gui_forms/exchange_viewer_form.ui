@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>Form</class>
+    <widget class="QWidget" name="Form">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>406</width>
+                <height>232</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Form</string>
+        </property>
+        <widget class="QLabel" name="label">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>30</y>
+                    <width>55</width>
+                    <height>16</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Epsilom</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_2">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>90</y>
+                    <width>101</width>
+                    <height>16</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Начальная дата</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_3">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>150</y>
+                    <width>101</width>
+                    <height>16</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Конечная дата</string>
+            </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="doubleSpinBox">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>50</y>
+                    <width>62</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="decimals">
+                <number>3</number>
+            </property>
+            <property name="maximum">
+                <double>1.000000000000000</double>
+            </property>
+            <property name="singleStep">
+                <double>0.001000000000000</double>
+            </property>
+            <property name="value">
+                <double>0.005000000000000</double>
+            </property>
+        </widget>
+        <widget class="QDateEdit" name="dateEdit">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>110</y>
+                    <width>110</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="date">
+                <date>
+                    <year>2017</year>
+                    <month>1</month>
+                    <day>1</day>
+                </date>
+            </property>
+        </widget>
+        <widget class="QDateEdit" name="dateEdit_2">
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>170</y>
+                    <width>110</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="date">
+                <date>
+                    <year>2018</year>
+                    <month>1</month>
+                    <day>1</day>
+                </date>
+            </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButton">
+            <property name="enabled">
+                <bool>true</bool>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>240</x>
+                    <y>50</y>
+                    <width>95</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>EUR/USD</string>
+            </property>
+            <property name="checked">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButton_2">
+            <property name="geometry">
+                <rect>
+                    <x>240</x>
+                    <y>70</y>
+                    <width>95</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>GBP/USD</string>
+            </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButton_3">
+            <property name="geometry">
+                <rect>
+                    <x>240</x>
+                    <y>90</y>
+                    <width>95</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>USD/JPY</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="label_4">
+            <property name="geometry">
+                <rect>
+                    <x>240</x>
+                    <y>30</y>
+                    <width>101</width>
+                    <height>16</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Валютная пара</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton">
+            <property name="geometry">
+                <rect>
+                    <x>230</x>
+                    <y>130</y>
+                    <width>121</width>
+                    <height>51</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Построить график</string>
+            </property>
+        </widget>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>

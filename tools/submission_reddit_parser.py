@@ -62,7 +62,7 @@ class SubredditLatest(object):
 if __name__ == '__main__':
     # time = get_last_date()
     # if time is None:
-    time = datetime(2014, 1, 1).date()
+    time = datetime(2012, 1, 1).date()
     # time = get_min_date() + timedelta(days=1)
 
     for submission in SubredditLatest("economics", time)():
