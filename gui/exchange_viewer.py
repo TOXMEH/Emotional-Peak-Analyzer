@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import numpy as np
 from PyQt5.QtWidgets import *
 from zigzag import peak_valley_pivots
@@ -6,26 +5,16 @@ from zigzag import peak_valley_pivots
 from gui_forms.exchange_viewer_form import Ui_Form
 from model.exchange_value import get_exchange_values_between
 from model.exchange_value_name import ExchangeValueName
+from services.plots import plot_pivots
 
 
 class ExchangeViewer(QWidget, Ui_Form):
     def __init__(self, parent=None):
         super(ExchangeViewer, self).__init__()
-
         self.setupUi(self)
+        self.pushButton.clicked.connect(self.pushbutton_event_hadler)
 
-        self.pushButton.clicked.connect(self.on_pushButton_clicked)
-
-    def plot_pivots(self, X, pivots, date_arr):
-        plt.xlim(min(date_arr), max(date_arr))
-        plt.ylim(X.min() * 0.99, X.max() * 1.01)
-        plt.plot(date_arr, X, 'k:', alpha=0.5)
-        plt.plot(date_arr[pivots != 0], X[pivots != 0], 'k-')
-        plt.scatter(date_arr[pivots == 1], X[pivots == 1], color='g')
-        plt.scatter(date_arr[pivots == -1], X[pivots == -1], color='r')
-        plt.show()
-
-    def on_pushButton_clicked(self):
+    def pushbutton_event_hadler(self):
         epsilom = self.doubleSpinBox.value()
         start_date = self.dateEdit.date().toPyDate()
         finish_date = self.dateEdit_2.date().toPyDate()
@@ -44,4 +33,4 @@ class ExchangeViewer(QWidget, Ui_Form):
         date_arr = np.array(date_arr)
         pivots = peak_valley_pivots(X, epsilom, (-1) * epsilom)
 
-        self.plot_pivots(X, pivots, date_arr)
+        plot_pivots(X, pivots, date_arr)

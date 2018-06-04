@@ -10,4 +10,3 @@ XlsxWriter==1.0.5
 praw==5.4.0
 PyMySQL==0.8.1
 PyQt5==5.10.1
-newspaper==0.1.0.7

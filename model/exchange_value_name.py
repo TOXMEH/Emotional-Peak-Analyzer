@@ -5,3 +5,4 @@ class ExchangeValueName(Enum):
     EUR = "eur"
     GBP = "gbp"
     JPY = "jpy"
+    USD = "usd"

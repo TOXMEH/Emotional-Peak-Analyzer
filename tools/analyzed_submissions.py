@@ -1,3 +1,6 @@
+from datetime import datetime
+
+import pymongo
 from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
@@ -40,3 +43,9 @@ if __name__ == '__main__':
 
         result['corpora'] = corpora
         result_collection.insert_one(result)
+
+
+def get_emotions_between(start_date: datetime.date, finish_date: datetime.date):
+    return result_collection.find({"date": {'$gte': datetime.combine(start_date, datetime.min.time()),
+                                            '$lt': datetime.combine(finish_date, datetime.min.time())}}).sort('date',
+                                                                                                              pymongo.ASCENDING)
