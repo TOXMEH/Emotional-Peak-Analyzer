@@ -31,9 +31,3 @@ def get_last_date() -> datetime.date:
 @db_session
 def get_exchange_values_between(start_date: datetime.date, finish_date: datetime.date) -> List[float]:
     return select(p for p in ExchangeValue if between(p.date_val, start_date, finish_date))[:]
-    # if exchange_value_name is ExchangeValueName.EUR:
-    #     return select(p.eur for p in ExchangeValue if between(p.date_val, start_date, finish_date))[:]
-    # elif exchange_value_name is ExchangeValueName.GBP:
-    #     return select(p.gbp for p in ExchangeValue if between(p.date_val, start_date, finish_date))
-    # elif exchange_value_name is ExchangeValueName.JPY:
-    #     return select(p.jpy for p in ExchangeValue if between(p.date_val, start_date, finish_date))
