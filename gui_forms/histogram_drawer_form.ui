@@ -1,266 +1,333 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>Form</class>
-    <widget class="QWidget" name="Form">
-        <property name="geometry">
-            <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>406</width>
-                <height>318</height>
-            </rect>
-        </property>
-        <property name="windowTitle">
-            <string>Form</string>
-        </property>
-        <widget class="QLabel" name="label_2">
-            <property name="geometry">
-                <rect>
-                    <x>30</x>
-                    <y>20</y>
-                    <width>101</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Начальная дата</string>
-            </property>
-        </widget>
-        <widget class="QLabel" name="label_3">
-            <property name="geometry">
-                <rect>
-                    <x>30</x>
-                    <y>80</y>
-                    <width>101</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Конечная дата</string>
-            </property>
-        </widget>
-        <widget class="QDateEdit" name="dateEdit">
-            <property name="geometry">
-                <rect>
-                    <x>30</x>
-                    <y>40</y>
-                    <width>110</width>
-                    <height>22</height>
-                </rect>
-            </property>
-            <property name="date">
-                <date>
-                    <year>2018</year>
-                    <month>4</month>
-                    <day>7</day>
-                </date>
-            </property>
-        </widget>
-        <widget class="QDateEdit" name="dateEdit_2">
-            <property name="geometry">
-                <rect>
-                    <x>30</x>
-                    <y>100</y>
-                    <width>110</width>
-                    <height>22</height>
-                </rect>
-            </property>
-            <property name="date">
-                <date>
-                    <year>2018</year>
-                    <month>5</month>
-                    <day>29</day>
-                </date>
-            </property>
-        </widget>
-        <widget class="QRadioButton" name="radioButton">
-            <property name="enabled">
-                <bool>true</bool>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>40</x>
-                    <y>160</y>
-                    <width>95</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>EUR/USD</string>
-            </property>
-            <property name="checked">
-                <bool>true</bool>
-            </property>
-        </widget>
-        <widget class="QRadioButton" name="radioButton_2">
-            <property name="geometry">
-                <rect>
-                    <x>40</x>
-                    <y>180</y>
-                    <width>95</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>GBP/USD</string>
-            </property>
-        </widget>
-        <widget class="QRadioButton" name="radioButton_3">
-            <property name="geometry">
-                <rect>
-                    <x>40</x>
-                    <y>200</y>
-                    <width>95</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>USD/JPY</string>
-            </property>
-        </widget>
-        <widget class="QLabel" name="label_4">
-            <property name="geometry">
-                <rect>
-                    <x>40</x>
-                    <y>140</y>
-                    <width>101</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Валютная пара</string>
-            </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton">
-            <property name="geometry">
-                <rect>
-                    <x>100</x>
-                    <y>250</y>
-                    <width>161</width>
-                    <height>51</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Построить гистограмму</string>
-            </property>
-        </widget>
-        <widget class="QLabel" name="label_5">
-            <property name="geometry">
-                <rect>
-                    <x>210</x>
-                    <y>40</y>
-                    <width>161</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Тим эмоционалной оценки</string>
-            </property>
-        </widget>
-        <widget class="QSlider" name="verticalSlider">
-            <property name="geometry">
-                <rect>
-                    <x>210</x>
-                    <y>70</y>
-                    <width>22</width>
-                    <height>51</height>
-                </rect>
-            </property>
-            <property name="maximum">
-                <number>1</number>
-            </property>
-            <property name="value">
-                <number>1</number>
-            </property>
-            <property name="orientation">
-                <enum>Qt::Vertical</enum>
-            </property>
-        </widget>
-        <widget class="QLabel" name="label_6">
-            <property name="geometry">
-                <rect>
-                    <x>250</x>
-                    <y>70</y>
-                    <width>101</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Положительная</string>
-            </property>
-        </widget>
-        <widget class="QLabel" name="label_7">
-            <property name="geometry">
-                <rect>
-                    <x>250</x>
-                    <y>100</y>
-                    <width>101</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Отрицательная</string>
-            </property>
-        </widget>
-        <widget class="QLabel" name="label_8">
-            <property name="geometry">
-                <rect>
-                    <x>210</x>
-                    <y>130</y>
-                    <width>161</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Тип пика</string>
-            </property>
-        </widget>
-        <widget class="QLabel" name="label_9">
-            <property name="geometry">
-                <rect>
-                    <x>250</x>
-                    <y>160</y>
-                    <width>101</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Bear</string>
-            </property>
-        </widget>
-        <widget class="QLabel" name="label_10">
-            <property name="geometry">
-                <rect>
-                    <x>250</x>
-                    <y>190</y>
-                    <width>101</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Bull</string>
-            </property>
-        </widget>
-        <widget class="QSlider" name="verticalSlider_2">
-            <property name="geometry">
-                <rect>
-                    <x>210</x>
-                    <y>160</y>
-                    <width>22</width>
-                    <height>51</height>
-                </rect>
-            </property>
-            <property name="maximum">
-                <number>1</number>
-            </property>
-            <property name="value">
-                <number>1</number>
-            </property>
-            <property name="orientation">
-                <enum>Qt::Vertical</enum>
-            </property>
-        </widget>
-    </widget>
-    <resources/>
-    <connections/>
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>406</width>
+    <height>473</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>160</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Начальная дата</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>220</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Конечная дата</string>
+   </property>
+  </widget>
+  <widget class="QDateEdit" name="dateEdit">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>180</y>
+     <width>110</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="date">
+    <date>
+     <year>2018</year>
+     <month>4</month>
+     <day>7</day>
+    </date>
+   </property>
+  </widget>
+  <widget class="QDateEdit" name="dateEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>240</y>
+     <width>110</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="date">
+    <date>
+     <year>2018</year>
+     <month>5</month>
+     <day>29</day>
+    </date>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>300</y>
+     <width>95</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>EUR/USD</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_2">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>320</y>
+     <width>95</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GBP/USD</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_3">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>340</y>
+     <width>95</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>USD/JPY</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>280</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Валютная пара</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>390</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Построить гистограмму</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>200</y>
+     <width>161</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Тим эмоционалной оценки</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="verticalSlider">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>230</y>
+     <width>22</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>1</number>
+   </property>
+   <property name="value">
+    <number>1</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>230</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Положительная</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>260</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Отрицательная</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>290</y>
+     <width>161</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Тип пика</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>320</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Bear</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>350</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Bull</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="verticalSlider_2">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>320</y>
+     <width>22</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>1</number>
+   </property>
+   <property name="value">
+    <number>1</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>20</y>
+     <width>211</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Величина перепада курсов валют</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>90</y>
+     <width>311</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Величина перепада эмоциональных оценок</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="doubleSpinBox">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>50</y>
+     <width>62</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="decimals">
+    <number>3</number>
+   </property>
+   <property name="maximum">
+    <double>1.000000000000000</double>
+   </property>
+   <property name="singleStep">
+    <double>0.001000000000000</double>
+   </property>
+   <property name="value">
+    <double>0.001000000000000</double>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="doubleSpinBox">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>120</y>
+     <width>61</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <double>10.000000000000000</double>
+   </property>
+   <property name="singleStep">
+    <double>0.100000000000000</double>
+   </property>
+   <property name="value">
+    <double>0.010000000000000</double>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
 </ui>

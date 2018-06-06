@@ -8,7 +8,6 @@
 
 from PyQt5 import QtCore, QtWidgets
 
-
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -22,13 +21,6 @@ class Ui_Form(object):
         self.label_3 = QtWidgets.QLabel(Form)
         self.label_3.setGeometry(QtCore.QRect(30, 150, 101, 16))
         self.label_3.setObjectName("label_3")
-        self.doubleSpinBox = QtWidgets.QDoubleSpinBox(Form)
-        self.doubleSpinBox.setGeometry(QtCore.QRect(30, 50, 62, 22))
-        self.doubleSpinBox.setDecimals(1)
-        self.doubleSpinBox.setMaximum(1.0)
-        self.doubleSpinBox.setSingleStep(0.1)
-        self.doubleSpinBox.setProperty("value", 0.1)
-        self.doubleSpinBox.setObjectName("doubleSpinBox")
         self.dateEdit = QtWidgets.QDateEdit(Form)
         self.dateEdit.setGeometry(QtCore.QRect(30, 110, 110, 22))
         self.dateEdit.setDate(QtCore.QDate(2018, 4, 7))
@@ -69,6 +61,13 @@ class Ui_Form(object):
         self.label_7 = QtWidgets.QLabel(Form)
         self.label_7.setGeometry(QtCore.QRect(280, 180, 101, 16))
         self.label_7.setObjectName("label_7")
+        self.doubleSpinBox = QtWidgets.QDoubleSpinBox(Form)
+        self.doubleSpinBox.setGeometry(QtCore.QRect(30, 50, 51, 22))
+        self.doubleSpinBox.setDecimals(2)
+        self.doubleSpinBox.setMaximum(10.0)
+        self.doubleSpinBox.setSingleStep(0.01)
+        self.doubleSpinBox.setProperty("value", 0.01)
+        self.doubleSpinBox.setObjectName("doubleSpinBox")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -87,3 +86,4 @@ class Ui_Form(object):
         self.label_5.setText(_translate("Form", "Тим эмоционалной оценки"))
         self.label_6.setText(_translate("Form", "Положительная"))
         self.label_7.setText(_translate("Form", "Отрицательная"))
+

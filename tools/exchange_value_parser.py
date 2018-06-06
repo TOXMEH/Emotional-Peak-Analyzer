@@ -12,7 +12,7 @@ if __name__ == '__main__':
     current_date: datetime.date = get_last_date() + datetime.timedelta(days=1)
 
     while current_date <= last_date:
-        url: str = 'http://data.fixer.io/api/latest' + '?access_key=' + API_ACCESS_KEY + '&symbols=USD,GBP,JPY'
+        url: str = 'http://data.fixer.io/api/' + current_date.isoformat() + '?access_key=' + API_ACCESS_KEY + '&symbols=USD,GBP,JPY'
         doc = urlopen(url).read()
         r = json.loads(doc.decode('UTF8'))
         eur: float = r['rates']['USD']
