@@ -6,7 +6,9 @@ model/__pycache__/
 config/__pycache__/
 *.py[cod]
 *$py.class
-
+*.pyc
+*~
+*.swp
 # C extensions
 *.so
 
