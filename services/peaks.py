@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import List
 
 import numpy as np
 from zigzag.core import peak_valley_pivots
@@ -80,3 +81,26 @@ def get_next_exchange_peak(date_of_emotion_peak, exchange_date_peak_arr):
         if el >= date_of_emotion_peak and (el - date_of_emotion_peak) < (closest_peak_date - date_of_emotion_peak):
             closest_peak_date = el
     return closest_peak_date
+
+
+def get_bears_and_bulls(exchange_date_arr: List[datetime.date], exchange_pivots,
+                        emotion_peak_date_arr: List[datetime.date]):
+    exchange_peak_date_arr = exchange_date_arr[exchange_pivots == 1]
+    exchange_valley_date_arr = exchange_date_arr[exchange_pivots == -1]
+
+    bears_after = 0
+    bulls_after = 0
+    for el in emotion_peak_date_arr:
+        closest_peak = get_next_exchange_peak(el, exchange_peak_date_arr)
+        closest_valley = get_next_exchange_peak(el, exchange_valley_date_arr)
+        if closest_peak is not None and closest_valley is not None:
+            if (closest_peak - el) < (closest_valley - el):
+                bears_after += 1
+            else:
+                bulls_after += 1
+        if closest_peak is not None and closest_valley is None:
+            bears_after += 1
+        if closest_valley is not None and closest_peak is None:
+            bulls_after += 1
+
+    return bears_after, bulls_after

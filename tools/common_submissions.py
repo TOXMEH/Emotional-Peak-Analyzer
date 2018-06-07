@@ -5,12 +5,14 @@ from statistics import pvariance, mean
 from pymongo import MongoClient
 from textblob import TextBlob
 
-from config.corpora import *
+from model.exchange_corpus import get_words_of_corpus
 from model.exchange_value_name import ExchangeValueName
 from model.reddit_submission import get_min_date, get_submissions_by_date
 
-all_corpora = {ExchangeValueName.USD.value: DOLLAR_CORPUS, ExchangeValueName.JPY.value: YEN_CORPUS,
-               ExchangeValueName.GBP.value: POUND_CORPUS, ExchangeValueName.EUR.value: EURO_CORPUS}
+all_corpora = {ExchangeValueName.USD.value: get_words_of_corpus(ExchangeValueName.USD.value),
+               ExchangeValueName.JPY.value: get_words_of_corpus(ExchangeValueName.JPY.value),
+               ExchangeValueName.GBP.value: get_words_of_corpus(ExchangeValueName.GBP.value),
+               ExchangeValueName.EUR.value: get_words_of_corpus(ExchangeValueName.EUR.value)}
 
 client = MongoClient('localhost', 27017)
 db = client['reddit']

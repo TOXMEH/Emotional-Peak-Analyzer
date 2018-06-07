@@ -19,23 +19,20 @@ class HistogramDrawer(QWidget, Ui_Form):
         emotion_epsilom = self.doubleSpinBox1.value()
         start_date = self.dateEdit.date().toPyDate()
         finish_date = self.dateEdit_2.date().toPyDate()
-        exchange_value_name = None
+        exchange_value_name = ExchangeValueName.JPY
         if self.radioButton.isChecked():
             exchange_value_name = ExchangeValueName.EUR
         elif self.radioButton_2.isChecked():
             exchange_value_name = ExchangeValueName.GBP
-        elif self.radioButton_3.isChecked():
-            exchange_value_name = ExchangeValueName.JPY
-        emotion_type = None
+
+        emotion_type = EmotionType.NEGATIVE
         if self.verticalSlider.value() == 1:
             emotion_type = EmotionType.POSITIVE
-        else:
-            emotion_type = EmotionType.NEGATIVE
-        peak_type = None
+
+        peak_type = PeakType.BULL
         if self.verticalSlider_2.value() == 1:
             peak_type = PeakType.BEAR
-        else:
-            peak_type = PeakType.BULL
+
         _, exchange_peak_date_arr, exchange_pivots = get_exchange_peaks(start_date, finish_date,
                                                                         exchange_epsilom,
                                                                         exchange_value_name)
@@ -45,14 +42,14 @@ class HistogramDrawer(QWidget, Ui_Form):
         exchange_peak_date_arr = exchange_peak_date_arr[exchange_pivots == peak_type.value]
         emotion_peak_date_arr = emotion_peak_date_arr[emotion_pivots == 1]
 
-        signifficant_peak_arr = []
+        significant_peak_arr = []
         lag_arr = []
         for el in emotion_peak_date_arr:
 
             next_exchange_peak = get_next_exchange_peak(el, exchange_peak_date_arr)
 
             if next_exchange_peak is not None:
-                signifficant_peak_arr.append(el)
+                significant_peak_arr.append(el)
                 lag = (next_exchange_peak - el).days
                 lag_arr.append(lag)
 

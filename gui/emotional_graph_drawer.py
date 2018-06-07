@@ -17,18 +17,15 @@ class EmotionalGraphDrawer(QWidget, Ui_Form):
         epsilom = self.doubleSpinBox.value()
         start_date = self.dateEdit.date().toPyDate()
         finish_date = self.dateEdit_2.date().toPyDate()
-        exchange_value_name = None
+        exchange_value_name = ExchangeValueName.JPY
         if self.radioButton.isChecked():
             exchange_value_name = ExchangeValueName.EUR
         elif self.radioButton_2.isChecked():
             exchange_value_name = ExchangeValueName.GBP
-        elif self.radioButton_3.isChecked():
-            exchange_value_name = ExchangeValueName.JPY
-        emotion_type = None
+
+        emotion_type = EmotionType.NEGATIVE
         if self.verticalSlider.value() == 1:
             emotion_type = EmotionType.POSITIVE
-        else:
-            emotion_type = EmotionType.NEGATIVE
 
         emotion_arr, date_arr, pivots = get_emotion_peaks(start_date, finish_date, epsilom,
                                                           exchange_value_name, emotion_type)

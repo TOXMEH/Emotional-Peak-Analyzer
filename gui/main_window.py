@@ -1,5 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow
 
+from gui.compound_contigency_table_drawer import CompoundContingencyTableDrawer
+from gui.contigency_table_drawer import ContigencyTableDrawer
 from gui.corpora_editor import CorporaEditor
 from gui.emotional_graph_drawer import EmotionalGraphDrawer
 from gui.exchange_viewer import ExchangeViewer
@@ -25,6 +27,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.corpora_editor = CorporaEditor(self)
         self.pushButton_5.clicked.connect(self.on_pushButton_5_clicked)
         self.histogram_drawer = HistogramDrawer(self)
+        self.pushButton_7.clicked.connect(self.on_pushButton_7_clicked)
+        self.contigency_table_drawer = ContigencyTableDrawer(self)
+        self.pushButton_8.clicked.connect(self.on_pushButton_8_clicked)
+        self.compound_contingency_table_drawer = CompoundContingencyTableDrawer(self)
 
     def on_pushButton_clicked(self):
         self.exchange_viewer_widget.show()
@@ -37,3 +43,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def on_pushButton_5_clicked(self):
         self.histogram_drawer.show()
+
+    def on_pushButton_7_clicked(self):
+        self.contigency_table_drawer.show()
+
+    def on_pushButton_8_clicked(self):
+        self.compound_contingency_table_drawer.show()

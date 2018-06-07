@@ -13,18 +13,16 @@ class ExchangeViewer(QWidget, Ui_Form):
         self.pushButton.clicked.connect(self.pushbutton_event_hadler)
 
     def pushbutton_event_hadler(self):
-        epsilom = self.doubleSpinBox.value()
+        epsilon = self.doubleSpinBox.value()
         start_date = self.dateEdit.date().toPyDate()
         finish_date = self.dateEdit_2.date().toPyDate()
-        exchange_value_name = None
+        exchange_value_name = ExchangeValueName.JPY
         if self.radioButton.isChecked():
             exchange_value_name = ExchangeValueName.EUR
         elif self.radioButton_2.isChecked():
             exchange_value_name = ExchangeValueName.GBP
-        elif self.radioButton_3.isChecked():
-            exchange_value_name = ExchangeValueName.JPY
 
-        exchange_arr, date_arr, pivots = get_exchange_peaks(start_date, finish_date, epsilom,
+        exchange_arr, date_arr, pivots = get_exchange_peaks(start_date, finish_date, epsilon,
                                                             exchange_value_name)
 
         plot_pivots(exchange_arr, pivots, date_arr)
