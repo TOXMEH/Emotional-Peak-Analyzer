@@ -250,7 +250,7 @@
                 <double>0.001000000000000</double>
             </property>
         </widget>
-        <widget class="QDoubleSpinBox" name="doubleSpinBox">
+        <widget class="QSpinBox" name="spinBox">
             <property name="geometry">
                 <rect>
                     <x>40</x>
@@ -259,14 +259,8 @@
                     <height>22</height>
                 </rect>
             </property>
-            <property name="maximum">
-                <double>10.000000000000000</double>
-            </property>
-            <property name="singleStep">
-                <double>0.100000000000000</double>
-            </property>
             <property name="value">
-                <double>0.010000000000000</double>
+                <number>3</number>
             </property>
         </widget>
     </widget>

@@ -5,7 +5,7 @@ from gui_forms.histogram_drawer_form import Ui_Form
 from model.emotion_type import EmotionType
 from model.exchange_value_name import ExchangeValueName
 from model.peak_type import PeakType
-from services.peaks import get_emotion_peaks, get_exchange_peaks, get_next_exchange_peak
+from services.peaks import get_emotions, get_exchange_peaks, get_next_exchange_peak
 
 
 class HistogramDrawer(QWidget, Ui_Form):
@@ -16,7 +16,7 @@ class HistogramDrawer(QWidget, Ui_Form):
 
     def pushbutton_event_hadler(self):
         exchange_epsilom = self.doubleSpinBox.value()
-        emotion_epsilom = self.doubleSpinBox1.value()
+        emotion_epsilom = self.spinBox.value()
         start_date = self.dateEdit.date().toPyDate()
         finish_date = self.dateEdit_2.date().toPyDate()
         exchange_value_name = ExchangeValueName.JPY
@@ -36,11 +36,15 @@ class HistogramDrawer(QWidget, Ui_Form):
         _, exchange_peak_date_arr, exchange_pivots = get_exchange_peaks(start_date, finish_date,
                                                                         exchange_epsilom,
                                                                         exchange_value_name)
-        _, emotion_peak_date_arr, emotion_pivots = get_emotion_peaks(start_date, finish_date, emotion_epsilom,
-                                                                     exchange_value_name, emotion_type)
+
+        if self.verticalSlider_3.value() == 1:
+            exchange_value_name = ExchangeValueName.USD
+
+        emotion_peak_arr, emotion_peak_date_arr = get_emotions(start_date, finish_date, exchange_value_name,
+                                                               emotion_type)
 
         exchange_peak_date_arr = exchange_peak_date_arr[exchange_pivots == peak_type.value]
-        emotion_peak_date_arr = emotion_peak_date_arr[emotion_pivots == 1]
+        emotion_peak_date_arr = emotion_peak_date_arr[emotion_peak_arr >= emotion_epsilom]
 
         significant_peak_arr = []
         lag_arr = []
@@ -53,8 +57,5 @@ class HistogramDrawer(QWidget, Ui_Form):
                 lag = (next_exchange_peak - el).days
                 lag_arr.append(lag)
 
-        lag_arr.extend(lag_arr)
-        lag_arr.extend(lag_arr)
-        lag_arr.extend(lag_arr)
         plt.hist(lag_arr, bins=len(lag_arr) * 2)
         plt.show()

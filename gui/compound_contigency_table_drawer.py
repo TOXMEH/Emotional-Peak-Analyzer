@@ -4,7 +4,7 @@ from gui.ContigencyTable import ContigencyTable
 from gui_forms.compound_contigency_table_form import Ui_Form
 from model.emotion_type import EmotionType
 from model.exchange_value_name import ExchangeValueName
-from services.peaks import get_emotion_peaks, get_exchange_peaks, get_bears_and_bulls
+from services.peaks import get_emotions, get_exchange_peaks, get_bears_and_bulls
 
 
 class CompoundContingencyTableDrawer(QWidget, Ui_Form):
@@ -15,7 +15,7 @@ class CompoundContingencyTableDrawer(QWidget, Ui_Form):
 
     def pushbutton_event_hadler(self):
         exchange_epsilom = self.doubleSpinBox.value()
-        emotion_epsilom = self.doubleSpinBox1.value()
+        emotion_epsilom = self.spinBox.value()
         start_date = self.dateEdit.date().toPyDate()
         finish_date = self.dateEdit_2.date().toPyDate()
         exchange_value_name = None
@@ -36,29 +36,27 @@ class CompoundContingencyTableDrawer(QWidget, Ui_Form):
         else:
             second_index_type = EmotionType.NEGATIVE
 
-        _, native_emotion_pos_peak_date_arr, native_emotion_pos_pivots = get_emotion_peaks(start_date, finish_date,
-                                                                                           emotion_epsilom,
-                                                                                           exchange_value_name,
-                                                                                           EmotionType.POSITIVE)
-        _, native_emotion_neg_peak_date_arr, native_emotion_neg_pivots = get_emotion_peaks(start_date, finish_date,
-                                                                                           emotion_epsilom,
-                                                                                           exchange_value_name,
-                                                                                           EmotionType.NEGATIVE)
-
-        native_emotion_neg_peak_date_arr = native_emotion_neg_peak_date_arr[native_emotion_neg_pivots == 1]
-        native_emotion_pos_peak_date_arr = native_emotion_pos_peak_date_arr[native_emotion_pos_pivots == 1]
-
-        _, usd_emotion_pos_peak_date_arr, usd_emotion_pos_pivots = get_emotion_peaks(start_date, finish_date,
-                                                                                     emotion_epsilom,
-                                                                                     ExchangeValueName.USD,
+        native_emotion_pos_peak_arr, native_emotion_pos_peak_date_arr = get_emotions(start_date, finish_date,
+                                                                                     exchange_value_name,
                                                                                      EmotionType.POSITIVE)
-        _, usd_emotion_neg_peak_date_arr, usd_emotion_neg_pivots = get_emotion_peaks(start_date, finish_date,
-                                                                                     emotion_epsilom,
-                                                                                     ExchangeValueName.USD,
+        native_emotion_neg_peak_arr, native_emotion_neg_peak_date_arr = get_emotions(start_date, finish_date,
+                                                                                     exchange_value_name,
                                                                                      EmotionType.NEGATIVE)
 
-        usd_emotion_neg_peak_date_arr = usd_emotion_neg_peak_date_arr[usd_emotion_neg_pivots == 1]
-        usd_emotion_pos_peak_date_arr = usd_emotion_pos_peak_date_arr[usd_emotion_pos_pivots == 1]
+        native_emotion_neg_peak_date_arr = native_emotion_neg_peak_date_arr[
+            native_emotion_neg_peak_arr >= emotion_epsilom]
+        native_emotion_pos_peak_date_arr = native_emotion_pos_peak_date_arr[
+            native_emotion_neg_peak_arr >= emotion_epsilom]
+
+        usd_emotion_pos_peak_arr, usd_emotion_pos_peak_date_arr = get_emotions(start_date, finish_date,
+                                                                               ExchangeValueName.USD,
+                                                                               EmotionType.POSITIVE)
+        usd_emotion_neg_peak_arr, usd_emotion_neg_peak_date_arr = get_emotions(start_date, finish_date,
+                                                                               ExchangeValueName.USD,
+                                                                               EmotionType.NEGATIVE)
+
+        usd_emotion_neg_peak_date_arr = usd_emotion_neg_peak_date_arr[usd_emotion_pos_peak_arr >= emotion_epsilom]
+        usd_emotion_pos_peak_date_arr = usd_emotion_pos_peak_date_arr[usd_emotion_neg_peak_arr >= emotion_epsilom]
 
         native_bears_after_neg, native_bulls_after_neg = get_bears_and_bulls(exchange_date_arr, exchange_pivots,
                                                                              native_emotion_neg_peak_date_arr)

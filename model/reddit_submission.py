@@ -50,3 +50,9 @@ def get_min_date() -> datetime.date:
 @db_session
 def get_submissions_by_date(start_date: datetime.date) -> List[Submission]:
     return Submission.select(lambda p: p.date_val == start_date).prefetch(Submission.text)[:]
+
+
+@db_session
+def get_rates(start_date: datetime.date, finish_date: datetime.date) -> List[float]:
+    return select(p for p in Submission if between(p.date_val, start_date, finish_date)).prefetch(
+        Submission.score)[:]

@@ -23,8 +23,8 @@ def get_exchange_peaks(start_date: datetime.date, finish_date: datetime.date, ep
     return exchange_arr, date_arr, pivots
 
 
-def get_emotion_peaks(start_date: datetime.date, finish_date: datetime.date, epsilon: float,
-                      corpora_name: ExchangeValueName, emotion_type: EmotionType):
+def get_emotions(start_date: datetime.date, finish_date: datetime.date, corpora_name: ExchangeValueName,
+                 emotion_type: EmotionType):
     em_arr = get_emotions_between(start_date, finish_date)
     emotion_arr = []
     date_arr = []
@@ -38,39 +38,10 @@ def get_emotion_peaks(start_date: datetime.date, finish_date: datetime.date, eps
                 else:
                     emotion_arr.append(el['negative_mentions'])
 
-    X = np.array(emotion_arr)
+    emotion_arr = np.array(emotion_arr)
     date_arr = np.array(date_arr)
 
-    emotion_arr[0] += 1
-    start_pos = 0
-    i = 1
-    zeros = 0
-    while i < len(emotion_arr):
-        emotion_arr[i] += 1
-        if emotion_arr[i] == 1:
-            zeros += 1
-        elif zeros > 0:
-            j = start_pos + 1
-            step = abs(emotion_arr[i] - emotion_arr[start_pos]) / (i - start_pos)
-            if step == 0:
-                step = 0.001
-            while j < i:
-                if emotion_arr[i] >= emotion_arr[start_pos]:
-                    emotion_arr[j] = np.math.ceil(step * (j - start_pos))
-                else:
-                    emotion_arr[j] = np.math.ceil(step * (i - j - start_pos))
-                j += 1
-            zeros = 0
-            start_pos = i
-        else:
-            start_pos = i
-        i += 1
-    emotion_arr = [x if x != 0 else 0.1 for x in emotion_arr]
-
-    pivots = peak_valley_pivots(np.array(emotion_arr).astype(np.double), epsilon,
-                                (-1) * epsilon)
-
-    return emotion_arr, date_arr, pivots
+    return emotion_arr, date_arr
 
 
 def get_next_exchange_peak(date_of_emotion_peak, exchange_date_peak_arr):

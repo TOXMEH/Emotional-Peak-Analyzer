@@ -6,6 +6,7 @@ from gui.corpora_editor import CorporaEditor
 from gui.emotional_graph_drawer import EmotionalGraphDrawer
 from gui.exchange_viewer import ExchangeViewer
 from gui.histogram_drawer import HistogramDrawer
+from gui.score_viewer import ScoreViewer
 from gui_forms.main_window_form import Ui_MainWindow
 
 
@@ -31,6 +32,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.contigency_table_drawer = ContigencyTableDrawer(self)
         self.pushButton_8.clicked.connect(self.on_pushButton_8_clicked)
         self.compound_contingency_table_drawer = CompoundContingencyTableDrawer(self)
+        self.pushButton_9.clicked.connect(self.on_pushButton_9_clicked)
+        self.score_viewer = ScoreViewer(self)
 
     def on_pushButton_clicked(self):
         self.exchange_viewer_widget.show()
@@ -49,3 +52,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def on_pushButton_8_clicked(self):
         self.compound_contingency_table_drawer.show()
+
+    def on_pushButton_9_clicked(self):
+        self.score_viewer.show()

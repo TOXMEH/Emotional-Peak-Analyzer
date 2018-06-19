@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>406</width>
-    <height>275</height>
+       <height>351</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -147,14 +147,14 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>140</x>
+        <x>40</x>
      <y>210</y>
-     <width>121</width>
+        <width>341</width>
      <height>51</height>
     </rect>
    </property>
    <property name="text">
-    <string>Построить график</string>
+       <string>Построить график эмоциональных импульсов</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
@@ -215,7 +215,7 @@
     <string>Отрицательная</string>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="doubleSpinBox">
+     <widget class="QSpinBox" name="spinBox">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -224,17 +224,21 @@
      <height>22</height>
     </rect>
    </property>
-   <property name="decimals">
-    <number>2</number>
+         <property name="value">
+             <number>5</number>
    </property>
-   <property name="maximum">
-    <double>10.000000000000000</double>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+         <property name="geometry">
+             <rect>
+                 <x>40</x>
+                 <y>280</y>
+                 <width>341</width>
+                 <height>51</height>
+             </rect>
    </property>
-   <property name="singleStep">
-    <double>0.010000000000000</double>
-   </property>
-   <property name="value">
-    <double>0.010000000000000</double>
+         <property name="text">
+             <string>Построить гистограмму распределения</string>
    </property>
   </widget>
  </widget>

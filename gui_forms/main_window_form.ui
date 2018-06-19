@@ -6,8 +6,8 @@
             <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>724</width>
-                <height>790</height>
+                <width>931</width>
+                <height>642</height>
             </rect>
         </property>
         <property name="windowTitle">
@@ -17,40 +17,55 @@
             <widget class="QPushButton" name="pushButton">
                 <property name="geometry">
                     <rect>
-                        <x>50</x>
-                        <y>40</y>
-                        <width>201</width>
-                        <height>131</height>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>901</width>
+                        <height>71</height>
                     </rect>
                 </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
                 <property name="text">
-                    <string>Посмотреть курсы валют</string>
+                    <string>Курсы валют</string>
                 </property>
             </widget>
             <widget class="QPushButton" name="pushButton_2">
                 <property name="geometry">
                     <rect>
-                        <x>290</x>
-                        <y>40</y>
-                        <width>361</width>
-                        <height>131</height>
+                        <x>10</x>
+                        <y>90</y>
+                        <width>901</width>
+                        <height>71</height>
                     </rect>
                 </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
                 <property name="text">
-                    <string>Посмотреть эмоциональные ожидания валютного рынка</string>
+                    <string>Эмоциональные ожидания валютного рынка</string>
                 </property>
             </widget>
             <widget class="QPushButton" name="pushButton_5">
                 <property name="geometry">
                     <rect>
-                        <x>40</x>
-                        <y>370</y>
-                        <width>591</width>
-                        <height>131</height>
+                        <x>10</x>
+                        <y>340</y>
+                        <width>901</width>
+                        <height>71</height>
                     </rect>
                 </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
                 <property name="text">
-                    <string>Построить гистрограммы распределения эмоциональных ожиданий валютного рынка</string>
+                    <string>Гистрограммы распределения дней между пиками</string>
                 </property>
                 <property name="checkable">
                     <bool>false</bool>
@@ -65,27 +80,37 @@
             <widget class="QPushButton" name="pushButton_6">
                 <property name="geometry">
                     <rect>
-                        <x>420</x>
-                        <y>200</y>
-                        <width>201</width>
-                        <height>131</height>
+                        <x>10</x>
+                        <y>170</y>
+                        <width>901</width>
+                        <height>71</height>
                     </rect>
                 </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
                 <property name="text">
-                    <string>Посмотреть корпуса валют</string>
+                    <string>Корпуса валют</string>
                 </property>
             </widget>
             <widget class="QPushButton" name="pushButton_7">
                 <property name="geometry">
                     <rect>
-                        <x>50</x>
-                        <y>200</y>
-                        <width>301</width>
-                        <height>131</height>
+                        <x>10</x>
+                        <y>430</y>
+                        <width>901</width>
+                        <height>71</height>
                     </rect>
                 </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
                 <property name="text">
-                    <string>Построить таблицы сопряженности</string>
+                    <string>Таблицы сопряженности</string>
                 </property>
                 <property name="checkable">
                     <bool>false</bool>
@@ -100,14 +125,19 @@
             <widget class="QPushButton" name="pushButton_8">
                 <property name="geometry">
                     <rect>
-                        <x>40</x>
-                        <y>530</y>
-                        <width>591</width>
-                        <height>131</height>
+                        <x>10</x>
+                        <y>520</y>
+                        <width>901</width>
+                        <height>71</height>
                     </rect>
                 </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
                 <property name="text">
-                    <string>Построить таблицы сопряженности по составным индексам</string>
+                    <string>Таблицы сопряженности по составным индексам</string>
                 </property>
                 <property name="checkable">
                     <bool>false</bool>
@@ -119,16 +149,40 @@
                     <bool>false</bool>
                 </property>
             </widget>
+            <widget class="QPushButton" name="pushButton_9">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>250</y>
+                        <width>901</width>
+                        <height>71</height>
+                    </rect>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>20</pointsize>
+                    </font>
+                </property>
+                <property name="text">
+                    <string>Рейтинги новостей</string>
+                </property>
+            </widget>
         </widget>
         <widget class="QMenuBar" name="menubar">
             <property name="geometry">
                 <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>724</width>
+                    <width>931</width>
                     <height>26</height>
                 </rect>
             </property>
+            <widget class="QMenu" name="menu">
+                <property name="title">
+                    <string>Главное меню</string>
+                </property>
+            </widget>
+            <addaction name="menu"/>
         </widget>
         <widget class="QStatusBar" name="statusbar"/>
     </widget>

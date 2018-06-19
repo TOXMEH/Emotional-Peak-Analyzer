@@ -4,7 +4,7 @@ from gui.ContigencyTable import ContigencyTable
 from gui_forms.contigency_form import Ui_Form
 from model.emotion_type import EmotionType
 from model.exchange_value_name import ExchangeValueName
-from services.peaks import get_emotion_peaks, get_exchange_peaks, get_bears_and_bulls
+from services.peaks import get_emotions, get_exchange_peaks, get_bears_and_bulls
 
 
 class ContigencyTableDrawer(QWidget, Ui_Form):
@@ -32,17 +32,15 @@ class ContigencyTableDrawer(QWidget, Ui_Form):
         if self.verticalSlider_2.value() == 1:
             exchange_value_name = ExchangeValueName.USD
 
-        _, emotion_pos_peak_date_arr, emotion_pos_pivots = get_emotion_peaks(start_date, finish_date,
-                                                                             emotion_epsilon,
-                                                                             exchange_value_name,
-                                                                             EmotionType.POSITIVE)
-        _, emotion_neg_peak_date_arr, emotion_neg_pivots = get_emotion_peaks(start_date, finish_date,
-                                                                             emotion_epsilon,
-                                                                             exchange_value_name,
-                                                                             EmotionType.NEGATIVE)
+        emotion_pos_peak_arr, emotion_pos_peak_date_arr = get_emotions(start_date, finish_date,
+                                                                       exchange_value_name,
+                                                                       EmotionType.POSITIVE)
+        emotion_neg_peak_arr, emotion_neg_peak_date_arr = get_emotions(start_date, finish_date,
+                                                                       exchange_value_name,
+                                                                       EmotionType.NEGATIVE)
 
-        emotion_neg_peak_date_arr = emotion_neg_peak_date_arr[emotion_neg_pivots == 1]
-        emotion_pos_peak_date_arr = emotion_pos_peak_date_arr[emotion_pos_pivots == 1]
+        emotion_neg_peak_date_arr = emotion_neg_peak_date_arr[emotion_pos_peak_arr >= emotion_epsilon]
+        emotion_pos_peak_date_arr = emotion_pos_peak_date_arr[emotion_neg_peak_arr >= emotion_epsilon]
 
         bears_after_neg, bulls_after_neg = get_bears_and_bulls(exchange_date_arr, exchange_pivots,
                                                                emotion_neg_peak_date_arr)

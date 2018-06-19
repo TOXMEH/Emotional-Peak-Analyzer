@@ -17,6 +17,7 @@ class ContigencyTable(QWidget, Ui_Form):
         self.tableWidget.setItem(1, 1, QTableWidgetItem(str(bulls_after_neg)))
 
         fisher_probability: float
-        _, fisher_probability = stats.fisher_exact([[8, 2], [1, 5]])
+        _, fisher_probability = stats.fisher_exact(
+            [[bears_after_pos, bulls_after_pos], [bears_after_neg, bulls_after_neg]])
 
         self.label_3.setText(str(fisher_probability))
