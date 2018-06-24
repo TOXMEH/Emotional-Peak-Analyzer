@@ -28,8 +28,9 @@ class EmotionalGraphDrawer(QWidget, Ui_Form):
         if self.verticalSlider.value() == 1:
             self.emotion_type = EmotionType.POSITIVE
 
-        self.emotion_arr, self.date_arr = get_emotions(self.start_date, self.finish_date, self.exchange_value_name,
-                                                       self.emotion_type)
+        self.emotion_arr, self.date_arr, self.pivots = get_emotions(self.start_date, self.finish_date,
+                                                                    self.exchange_value_name,
+                                                                    self.emotion_type, self.epsilom)
 
     def pushbutton_event_handler(self):
         self.get_form_values()
@@ -37,11 +38,11 @@ class EmotionalGraphDrawer(QWidget, Ui_Form):
         plt.xlim(min(self.date_arr), max(self.date_arr))
         plt.ylim(min(self.emotion_arr) * 0.99, max(self.emotion_arr) * 1.01)
         plt.plot(self.date_arr, self.emotion_arr, 'k:', alpha=0.5)
-        plt.scatter(self.date_arr[self.emotion_arr >= self.epsilom], self.emotion_arr[self.emotion_arr >= self.epsilom],
+        plt.scatter(self.date_arr[self.pivots == 1], self.emotion_arr[self.pivots == 1],
                     color='g')
         plt.show()
 
     def pushbutton2_event_handler(self):
         self.get_form_values()
-        plt.hist(self.emotion_arr, bins=len(self.emotion_arr) * 2)
+        plt.hist([x for x in self.emotion_arr if x >= self.epsilom], bins=len(self.emotion_arr) * 2)
         plt.show()

@@ -20,4 +20,5 @@ db.generate_mapping(create_tables=False)
 
 @db_session
 def get_words_of_corpus(corpus: ExchangeValueName) -> List[str]:
-    return select(p.word for p in ExchangeCorpus if p.corpus_name == corpus.value).prefetch(ExchangeCorpus.word)[:]
+    return select(p.word for p in ExchangeCorpus if p.corpus_name == corpus).prefetch(ExchangeCorpus.word)[:]
+    # return Submission.select(lambda p: p.date_val == start_date).prefetch(Submission.text)[:]

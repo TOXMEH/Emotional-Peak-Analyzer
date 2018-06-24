@@ -36,27 +36,33 @@ class CompoundContingencyTableDrawer(QWidget, Ui_Form):
         else:
             second_index_type = EmotionType.NEGATIVE
 
-        native_emotion_pos_peak_arr, native_emotion_pos_peak_date_arr = get_emotions(start_date, finish_date,
-                                                                                     exchange_value_name,
-                                                                                     EmotionType.POSITIVE)
-        native_emotion_neg_peak_arr, native_emotion_neg_peak_date_arr = get_emotions(start_date, finish_date,
-                                                                                     exchange_value_name,
-                                                                                     EmotionType.NEGATIVE)
+        native_emotion_pos_peak_arr, native_emotion_pos_peak_date_arr, native_emotion_pos_pivots = get_emotions(
+            start_date, finish_date,
+            exchange_value_name,
+            EmotionType.POSITIVE, emotion_epsilom)
+        native_emotion_neg_peak_arr, native_emotion_neg_peak_date_arr, native_emotion_neg_pivots = get_emotions(
+            start_date, finish_date,
+            exchange_value_name,
+            EmotionType.NEGATIVE, emotion_epsilom)
 
         native_emotion_neg_peak_date_arr = native_emotion_neg_peak_date_arr[
-            native_emotion_neg_peak_arr >= emotion_epsilom]
+            native_emotion_pos_pivots == 1]
         native_emotion_pos_peak_date_arr = native_emotion_pos_peak_date_arr[
-            native_emotion_neg_peak_arr >= emotion_epsilom]
+            native_emotion_neg_pivots == 1]
 
-        usd_emotion_pos_peak_arr, usd_emotion_pos_peak_date_arr = get_emotions(start_date, finish_date,
-                                                                               ExchangeValueName.USD,
-                                                                               EmotionType.POSITIVE)
-        usd_emotion_neg_peak_arr, usd_emotion_neg_peak_date_arr = get_emotions(start_date, finish_date,
-                                                                               ExchangeValueName.USD,
-                                                                               EmotionType.NEGATIVE)
+        usd_emotion_pos_peak_arr, usd_emotion_pos_peak_date_arr, usd_emotion_pos_pivots = get_emotions(start_date,
+                                                                                                       finish_date,
+                                                                                                       ExchangeValueName.USD,
+                                                                                                       EmotionType.POSITIVE,
+                                                                                                       emotion_epsilom)
+        usd_emotion_neg_peak_arr, usd_emotion_neg_peak_date_arr, usd_emotion_neg_pivots = get_emotions(start_date,
+                                                                                                       finish_date,
+                                                                                                       ExchangeValueName.USD,
+                                                                                                       EmotionType.NEGATIVE,
+                                                                                                       emotion_epsilom)
 
-        usd_emotion_neg_peak_date_arr = usd_emotion_neg_peak_date_arr[usd_emotion_pos_peak_arr >= emotion_epsilom]
-        usd_emotion_pos_peak_date_arr = usd_emotion_pos_peak_date_arr[usd_emotion_neg_peak_arr >= emotion_epsilom]
+        usd_emotion_neg_peak_date_arr = usd_emotion_neg_peak_date_arr[usd_emotion_pos_pivots == 1]
+        usd_emotion_pos_peak_date_arr = usd_emotion_pos_peak_date_arr[usd_emotion_neg_pivots == 1]
 
         native_bears_after_neg, native_bulls_after_neg = get_bears_and_bulls(exchange_date_arr, exchange_pivots,
                                                                              native_emotion_neg_peak_date_arr)

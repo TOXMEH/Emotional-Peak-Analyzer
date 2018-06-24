@@ -9,7 +9,8 @@ db.bind(provider='mysql', host='localhost', user='root', passwd='password', db='
 
 class Submission(db.Entity):
     _table_ = "reddit_submissions"
-    id = PrimaryKey(str)
+    id = PrimaryKey(int)
+    reddit_id = Optional(str)
     date_val: datetime.date = Required(datetime.date, column="date")
     title = Required(LongStr)
     url = Required(LongStr)
@@ -21,17 +22,17 @@ db.generate_mapping(create_tables=False)
 
 
 @db_session
-def get_submission(id: str):
+def get_submission(reddit_id: str):
     try:
-        return Submission[id]
+        return Submission[reddit_id]
     except ObjectNotFound:
         return None
 
 
 @db_session
-def insert_submission(id: str, date_val: datetime.date, title: str, url: str, score: int, text: str = None):
+def insert_submission(reddit_id: str, date_val: datetime.date, title: str, url: str, score: int, text: str = None):
     try:
-        Submission(id=id, date_val=date_val, title=title, url=url, score=score, text=text)
+        Submission(reddit_id=reddit_id, date_val=date_val, title=title, url=url, score=score, text=text)
         commit()
     except UnexpectedError:
         pass

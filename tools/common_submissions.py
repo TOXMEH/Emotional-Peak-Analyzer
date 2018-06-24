@@ -16,7 +16,7 @@ all_corpora = {ExchangeValueName.USD.value: get_words_of_corpus(ExchangeValueNam
 
 client = MongoClient('localhost', 27017)
 db = client['reddit']
-# db['common_submissions'].drop()
+db['common_submissions'].drop()
 collection = db['common_submissions']
 
 if __name__ == '__main__':

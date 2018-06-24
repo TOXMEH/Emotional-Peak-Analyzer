@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import List
 
 import numpy as np
+import peakutils as peakutils
 from zigzag.core import peak_valley_pivots
 
 from model.emotion_type import EmotionType
@@ -24,7 +25,7 @@ def get_exchange_peaks(start_date: datetime.date, finish_date: datetime.date, ep
 
 
 def get_emotions(start_date: datetime.date, finish_date: datetime.date, corpora_name: ExchangeValueName,
-                 emotion_type: EmotionType):
+                 emotion_type: EmotionType, epsilon: int):
     em_arr = get_emotions_between(start_date, finish_date)
     emotion_arr = []
     date_arr = []
@@ -38,10 +39,13 @@ def get_emotions(start_date: datetime.date, finish_date: datetime.date, corpora_
                 else:
                     emotion_arr.append(el['negative_mentions'])
 
+    peaks = peakutils.indexes(np.array([x if x >= epsilon else 0 for x in emotion_arr]))
+    pivots = np.array([1 if x in peaks else 0 for x in [i for i in range(len(emotion_arr))]])
     emotion_arr = np.array(emotion_arr)
+
     date_arr = np.array(date_arr)
 
-    return emotion_arr, date_arr
+    return emotion_arr, date_arr, pivots
 
 
 def get_next_exchange_peak(date_of_emotion_peak, exchange_date_peak_arr):

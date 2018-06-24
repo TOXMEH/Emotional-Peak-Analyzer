@@ -8,7 +8,6 @@
 
 from PyQt5 import QtCore, QtWidgets
 
-
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -72,12 +71,10 @@ class Ui_Form(object):
         self.doubleSpinBox.setSingleStep(0.001)
         self.doubleSpinBox.setProperty("value", 0.001)
         self.doubleSpinBox.setObjectName("doubleSpinBox")
-        self.doubleSpinBox1 = QtWidgets.QDoubleSpinBox(Form)
-        self.doubleSpinBox1.setGeometry(QtCore.QRect(40, 120, 61, 22))
-        self.doubleSpinBox1.setMaximum(10.0)
-        self.doubleSpinBox1.setSingleStep(0.1)
-        self.doubleSpinBox1.setProperty("value", 0.01)
-        self.doubleSpinBox1.setObjectName("doubleSpinBox1")
+        self.spinBox = QtWidgets.QSpinBox(Form)
+        self.spinBox.setGeometry(QtCore.QRect(40, 120, 61, 22))
+        self.spinBox.setProperty("value", 3)
+        self.spinBox.setObjectName("spinBox")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -97,3 +94,4 @@ class Ui_Form(object):
         self.label_10.setText(_translate("Form", "native"))
         self.label_11.setText(_translate("Form", "Величина перепада курсов валют"))
         self.label_12.setText(_translate("Form", "Величина перепада эмоциональных оценок"))
+

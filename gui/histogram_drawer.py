@@ -40,11 +40,12 @@ class HistogramDrawer(QWidget, Ui_Form):
         if self.verticalSlider_3.value() == 1:
             exchange_value_name = ExchangeValueName.USD
 
-        emotion_peak_arr, emotion_peak_date_arr = get_emotions(start_date, finish_date, exchange_value_name,
-                                                               emotion_type)
+        emotion_peak_arr, emotion_peak_date_arr, emotion_pivots = get_emotions(start_date, finish_date,
+                                                                               exchange_value_name,
+                                                                               emotion_type, emotion_epsilom)
 
         exchange_peak_date_arr = exchange_peak_date_arr[exchange_pivots == peak_type.value]
-        emotion_peak_date_arr = emotion_peak_date_arr[emotion_peak_arr >= emotion_epsilom]
+        emotion_peak_date_arr = emotion_peak_date_arr[emotion_pivots == 1]
 
         significant_peak_arr = []
         lag_arr = []

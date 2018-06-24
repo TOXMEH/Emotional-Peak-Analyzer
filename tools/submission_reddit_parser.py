@@ -64,18 +64,20 @@ if __name__ == '__main__':
     # if time is None:
     time = datetime(2012, 1, 1).date()
     # time = get_min_date() + timedelta(days=1)
+    try:
+        for submission in SubredditLatest("economics", time)():
 
-    for submission in SubredditLatest("economics", time)():
+            if get_submission(submission.reddit_id) is None and submission.score >= 10:
+                article = Article(submission.url)
+                article.download()
+                try:
+                    article.parse()
+                except ArticleException:
+                    continue
 
-        if get_submission(submission.id) is None and submission.score >= 10:
-            article = Article(submission.url)
-            article.download()
-            try:
-                article.parse()
-            except ArticleException:
-                continue
-
-            insert_submission(id=submission.id, date_val=datetime.fromtimestamp(submission.created).date(),
-                              title=submission.title,
-                              url=submission.url,
-                              score=submission.score, text=article.text)
+                insert_submission(reddit_id=submission.id, date_val=datetime.fromtimestamp(submission.created).date(),
+                                  title=submission.title,
+                                  url=submission.url,
+                                  score=submission.score, text=article.text)
+    except Exception:
+        print(Exception)
